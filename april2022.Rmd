@@ -39,7 +39,7 @@ waste_audit <- april2022auditdata %>%
         prop_compost_weight = weight_compost_lbs / total_can_weight)
 ```
 
-```{r average-piece-weight}
+```{r locations-attachments}
 waste_audit <- waste_audit %>%  
   mutate(restaurant = case_when(
     can_number %in% c(23, 24, 25, 26, 27, 28) ~ "Zwelis",
