@@ -9,6 +9,13 @@ output:
   word_document: default
 ---
 
+to do: 
+- fix can_number -> Location tag for 28-30 (why showing up NA?)
+- t-distributions, change the degree of freedom
+- slices of the data taken for ANY graph or table
+- compare feb to apr
+- compare 2022 to 2021
+
 ```{r setup, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE, comment = NA, 
                       message = FALSE, warning = FALSE,
@@ -577,7 +584,7 @@ pie(slices, labels = lbls, col = c("#2ca816", "#cc2900"), main = "Contamination 
 
 ## Comparison Between 2021 and Feb 2022 Results
 
-#DID NOT LOOK AT TABLE BELOW AND ALSO DO MORE
+# DID NOT LOOK AT TABLE BELOW AND ALSO DO MORE
 
 ```{r 2021-feb2022}
 con <- data.frame(year = c("2021", "2022"),
@@ -597,9 +604,7 @@ ggplot(con) +
 -	error: some contamination spreads (e.g. containers filled with liquid)
 -	error: varying time between locations on how long the waste receptacles were allowed to fill up between last emptying time and time of collection
 -	discuss time of day and year that the data was collected
-    -	Zweli's was having an open house, so the amount of waste collected does not necessarily represent a typical day
 -	note: this does not account for all waste; waste disposed of in dorms, WU conveyor belt, BC, library, quad trash bins, gym (Red Mango), East Campus (Marketplace, dorms)
 -	random sampling from the Plaza Big Bellies --- we got through all of the trash bags that we could with no particular order in mind
 -	common contaminants: clear plastic lids (some are compostable and others are recyclable)
--	outstanding contaminants: batteries (2) -- these were run to Staples after the audit for proper disposal (limited resources on campus to dispose of these properly
--	noted that Zweli's has confusing signage/organization of their compost and landfill bins
+-	outstanding contaminants: 2 reusable bowls from WU
