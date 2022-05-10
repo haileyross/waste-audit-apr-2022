@@ -15,6 +15,9 @@ knitr::opts_chunk$set(echo = FALSE, comment = NA,
                       fig.height = 6, fig.width = 9, fig.align = "center")
 ```
 
+trying to pull csv file uploaded to git hub
+ultimate goal: get the april2022auditdata csv file to be pullable so that the doc will knit
+
 ```{r packages}
 library(tidyverse)
 library(infer)
@@ -25,9 +28,15 @@ library(rvest)
 library(httr)
 library(tinytex)
 library(sf)
+library(readr)
 ```
 
-```{r upload-and-clean-data}
+```{r read-csv}
+april2022auditdata <- read_csv("~/Downloads/april2022auditdata.csv")
+View(april2022auditdata)
+```
+
+```{r clean-data}
 waste_audit <- april2022auditdata %>% 
   mutate(total_piece_volume = pieces_trash + pieces_recycle + pieces_compost, 
         total_can_weight = weight_trash_lbs + weight_recycle_lbs + weight_compost_lbs, 
