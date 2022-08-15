@@ -570,15 +570,18 @@ lbls <-paste(lbls, "%", sep = " ")
 pie(slices, labels = lbls, col = c("#2ca816", "#cc2900"), main = "Contamination at The Loop")
 ```
 
-## Comparison Between February and April
-
-The number of observations changed between February (44) and April (33).
-
 ## Comparison Across Audits
 
 See link for graph : https://docs.google.com/spreadsheets/d/1D5meii5QeQ2QEd4s2r1epPFfjXLqYrOdtVhL9DyRmh0/edit?usp=sharing
 
+The number of observations changed between April 2021 (22), February 2022 (44) and April 2022 (33). Bootstrap simulations and t-distributions calculated from years with more observations will statistically be more accurate.
 
+The actual measured rate of contamination for overall waste has decreased with each audit performed. However, while there is no statistically measured difference in performance between the February 2022 and April 2022 audit contamination rates per their overlapping confidence intervals, we can conclusively say that, with 95% confidence, there is a lower overall contamination rate between April 2021 and April 2022.
+
+trash
+trash and recycling
+recycling
+compost
 
 # Discussion
 
