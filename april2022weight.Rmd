@@ -572,24 +572,13 @@ pie(slices, labels = lbls, col = c("#2ca816", "#cc2900"), main = "Contamination 
 
 ## Comparison Between February and April
 
-
+The number of observations changed between February (44) and April (33).
 
 ## Comparison Across Audits
 
-DID NOT DO FOR WEIGHT Apr 2021 and Feb 2022
+See link for graph : https://docs.google.com/spreadsheets/d/1D5meii5QeQ2QEd4s2r1epPFfjXLqYrOdtVhL9DyRmh0/edit?usp=sharing
 
-```{r 2021-feb2022}
-con <- data.frame(year = c("April 2021", "February 2022", "April 2022"),
-  contamination_rate = c(74.5, 58, 59))
-ggplot(con) +
-    geom_bar(aes(x=year, y=contamination_rate), stat="identity", fill="#2ca816", width = 0.5) +
-  xlab("Date") +
-  ylab("Contamination Rates") +
-    ggtitle("Yearly Contamination Rate Comparison") +
-    ylim(0, 100) +
-  theme_minimal() +
-  scale_x_discrete(limits = con$year)
-```
+
 
 # Discussion
 
