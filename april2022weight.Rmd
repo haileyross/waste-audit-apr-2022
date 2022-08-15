@@ -9,6 +9,9 @@ output:
   word_document: default
 ---
 
+question: t-distribution -- did I calcualate the sqrt(n) correctly?
+question: Why is the trash & recycling t-distribution not more conservative than the bootstrap?
+
 ```{r setup, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE, comment = NA, 
                       message = FALSE, warning = FALSE,
@@ -24,7 +27,6 @@ library(robotstxt)
 library(rvest)
 library(httr)
 library(tinytex)
-library(sf)
 library(readr)
 ```
 
@@ -171,12 +173,10 @@ $\bar{x} \pm t^*\frac{s}{\sqrt{n}}$
 more conservative than normal distribution; weight on tail ends
 
 ```{r t-distribution-with-compost, eval = FALSE}
-mean(waste_audit$perc_missorted_c) + c(-1, 1) * 2.05 * sd(waste_audit$perc_missorted_c) / sqrt(44)
+mean(waste_audit$perc_missorted_c) + c(-1, 1) * 2.05 * sd(waste_audit$perc_missorted_c) / sqrt(33)
 ```
 
-tdist: 0.4794649, 0.6519931
-
-#change square root above because i think that it is wrong
+tdist: 0.4661198, 0.6653382
 
 -percent of trash and recycling that is missorted (so we can compare last year)
 
@@ -237,9 +237,9 @@ more conservative than normal distribution; weight on tail ends
 mean(boot_table_tr$perc_missorted_c) + c(-1, 1) * 2.05 * sd(boot_table_tr$perc_missorted_c) / sqrt(22)
 ```
 
-tdist: 0.5689777, 0.7698298
+tdist: 0.527804, 0.636317
 
-#change square root above because i think that it is wrong
+# change square root above because i think that it is wrong
 
 - percent of trash that is missorted
 
@@ -299,8 +299,6 @@ mean(boot_table_trash$perc_missorted_c) + c(-1, 1) * 2.05 * sd(boot_table_trash$
 
 tdist: 0.7509931, 0.8622923
 
-#change square root above because i think that it is wrong
-
 - percent of recycling that is missorted
     
 ```{r missorted-recycle}
@@ -359,10 +357,6 @@ mean(boot_table_recycling$perc_missorted_c) + c(-1, 1) * 2.05 * sd(boot_table_re
 ```
 
 tdist: 0.2940138, 0.4566268
-
-# What does the above plateau shape mean?
-
-# change square root above because i think that it is wrong
 
 - percent of compost that is missorted
     
@@ -582,11 +576,11 @@ pie(slices, labels = lbls, col = c("#2ca816", "#cc2900"), main = "Contamination 
 
 ## Comparison Across Audits
 
-DID NOT DO FOR WEIGHT
+DID NOT DO FOR WEIGHT Apr 2021 and Feb 2022
 
 ```{r 2021-feb2022}
 con <- data.frame(year = c("April 2021", "February 2022", "April 2022"),
-  contamination_rate = c(74.5, 58, 55))
+  contamination_rate = c(74.5, 58, 59))
 ggplot(con) +
     geom_bar(aes(x=year, y=contamination_rate), stat="identity", fill="#2ca816", width = 0.5) +
   xlab("Date") +

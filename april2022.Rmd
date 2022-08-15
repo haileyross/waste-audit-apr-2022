@@ -9,6 +9,9 @@ output:
   word_document: default
 ---
 
+question: t-distribution -- did I calcualate the sqrt(n) correctly?
+question: Why is the trash t-distribution not more conservative than the bootstrap?
+
 ```{r setup, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE, comment = NA, 
                       message = FALSE, warning = FALSE,
@@ -24,7 +27,6 @@ library(robotstxt)
 library(rvest)
 library(httr)
 library(tinytex)
-library(sf)
 library(readr)
 ```
 
@@ -171,12 +173,10 @@ $\bar{x} \pm t^*\frac{s}{\sqrt{n}}$
 more conservative than normal distribution; weight on tail ends
 
 ```{r t-distribution-with-compost, eval = FALSE}
-mean(waste_audit$perc_missorted_c) + c(-1, 1) * 2.05 * sd(waste_audit$perc_missorted_c) / sqrt(44)
+mean(waste_audit$perc_missorted_c) + c(-1, 1) * 2.05 * sd(waste_audit$perc_missorted_c) / sqrt(33)
 ```
 
-tdist: 0.4984849, 0.5994991
-
-#change square root above because i think that it is wrong
+tdist: 0.4906714, 0.6073125
 
 -percent of trash and recycling that is missorted (so we can compare last year)
 
@@ -239,8 +239,6 @@ mean(boot_table_tr$perc_missorted_c) + c(-1, 1) * 2.05 * sd(boot_table_tr$perc_m
 
 tdist: 0.527804, 0.636317
 
-#change square root above because i think that it is wrong
-
 - percent of trash that is missorted
 
 ```{r missorted-trash}
@@ -299,7 +297,7 @@ mean(boot_table_trash$perc_missorted_c) + c(-1, 1) * 2.05 * sd(boot_table_trash$
 
 tdist: 0.5787015, 0.6767601
 
-#change square root above because i think that it is wrong
+# Why is the t-distribution above not more conservative than the bootstrap?
 
 - percent of recycling that is missorted
     
@@ -359,8 +357,6 @@ mean(boot_table_recycling$perc_missorted_c) + c(-1, 1) * 2.05 * sd(boot_table_re
 ```
 
 tdist: 0.3816125, 0.5867787
-
-#change square root above because i think that it is wrong
 
 - percent of compost that is missorted
     
