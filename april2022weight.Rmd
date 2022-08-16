@@ -576,12 +576,31 @@ See link for graph : https://docs.google.com/spreadsheets/d/1D5meii5QeQ2QEd4s2r1
 
 The number of observations changed between April 2021 (22), February 2022 (44) and April 2022 (33). Bootstrap simulations and t-distributions calculated from years with more observations will statistically be more accurate.
 
-The actual measured rate of contamination for overall waste has decreased with each audit performed. However, while there is no statistically measured difference in performance between the February 2022 and April 2022 audit contamination rates per their overlapping confidence intervals, we can conclusively say that, with 95% confidence, there is a lower overall contamination rate between April 2021 and April 2022.
+The first waste audit (April 2021) performed on campus did not have access to collected contamination rates from compost containers. The February and April 2022 waste audits measured contamination rates in temporary and permanent compost bins that were set up around campus to gather additional data on students' sorting abilities. In order to best be able to compare these three waste audits, confidence intervals were created that just considered the rates of contamination in only trash and recycling bins, per the conditions of the first waste audit.
 
-trash
-trash and recycling
-recycling
-compost
+The actual measured rate of contamination for overall waste has still decreased with each audit performed. The contamination in the recycling stream measured in February 2022 is so great that, though the landfill-sorting performance can be said to be better than in April 2021, that when considering trash & recycling sorting together, there is no statistical difference between the performances in April 2021 and February 2022. On the other hand, the recycling contamination was statistically lower in April 2022, which balanced its poorer trash sorting performance at a confidence interval that is statistically different than that of April 2021 and February 2022. In other words, when considering the sorting of trash and recycling streams together, the April 2022 audit measured a statistically lower rate of contamination. 
+
+If one is to consider all streams measured across time without keeping the types of streams studied consistent (in other words, using all the data available), the actual measured rate of contamination for overall waste has still decreased with each audit performed. However, while there is no statistically measured difference in performance between the February 2022 and April 2022 audit contamination rates per their overlapping confidence intervals, we can conclusively say that, with 95% confidence, there is a lower overall contamination rate between April 2021 and April 2022.
+
+The contamination rate in the landfill stream alone is statistically lower in February 2022 than in April 2021 with 95% confidence. The contamination rates between February and April of 2022 are not statistically different at a 95% confidence level, although the actual contamination measured and confidence interval for the April 2022 waste audit are higher than that of February 2022.
+
+The contamination rates of recycling streams are not statistically different between April 2021 and February 2022, although the actual measured contamination rate is highest in February 2022. The contamination rate in April 2022 is statistically lower than that which was found in the other two audits at 95% confidence. The actual rate of recycling contamination found in April 2022 (34%) was respectively almost half (65%) and over half (79%) of those measured during the April 2021 and February 2022 audits.
+
+The contamination rates measured in compost containers alone (compost stream data only collected the February 2022 and April 2022 audits) are not statistically different at a 95% confidence level. The actual contamination value measured in April 2022 is 33%, and the actual contamination value measured in February 2022 was 38%.
+
+## Comparison between February 2022 and April 2022
+
+To recap, when considering all streams, there is no statistical difference between the contamination rates found in Febraury and April 2022. The actual contamination rates (73% and 59% respectively) do offer hope for the potential of a downward trend, especially when considering that contamination overall has improved since April 2021. What is even more hopeful is that there was a significant difference between the contamination rates of just trash and recycling bins, compared across the February and April audits. In other words, if you omit compost stream data (perhaps in recognition that students have had less exposure to these systems), then it is true that students sorted the "big two" streams of waste better in April. In particular, this education is most prominently seen in the recycling stream.
+
+Establishing an educational system to maintain student knowledge of campus recyclables and to teach what belongs in compost and trash streams is critical to the improvement of these numbers moving forward.
+
+## Attempted Educational Campaigns
+
+- Green Devils shadow boxes
+- DSG BC Plaza Tabling: How to Compost
+- Buzzfeed Quiz on How to Compost
+- East Campus RA Events/Outreach (DSG)
+- UEU one-page visual flyers
 
 # Discussion
 
