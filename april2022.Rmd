@@ -170,13 +170,17 @@ visualize(boot_missorted) +
 
 $\bar{x} \pm t^*\frac{s}{\sqrt{n}}$
 
+```{r qt-with-compost, eval = FALSE}
+qt(0.975, df = (33-1))
+```
+
 more conservative than normal distribution; weight on tail ends
 
 ```{r t-distribution-with-compost, eval = FALSE}
-mean(waste_audit$perc_missorted_c) + c(-1, 1) * 2.05 * sd(waste_audit$perc_missorted_c) / sqrt(33)
+mean(waste_audit$perc_missorted_c) + c(-1, 1) * 2.037 * sd(waste_audit$perc_missorted_c) / sqrt(33)
 ```
 
-tdist: 0.4906714, 0.6073125
+tdist: 0.4667515, 0.6647066
 
 -percent of trash and recycling that is missorted (so we can compare last year)
 
@@ -197,7 +201,7 @@ percent
 pct <- round(percent)
 lbls <- paste(lbls, pct)
 lbls <-paste(lbls, "%", sep = " ")
-pie(slices, labels = lbls, col = c("#2ca816", "#cc2900"), main = "Overall Contamination in both Trash and Recycling")
+pie(slices, labels = lbls, col = c("#2ca816", "#702963"), main = "Overall Contamination in both Trash and Recycling")
 ```
 
 - Bootstrap Sample TRASH + RECYCLING ONLY
@@ -231,13 +235,17 @@ visualize(boot_missorted_tr) +
 
 $\bar{x} \pm t^*\frac{s}{\sqrt{n}}$
 
+```{r qt-trash-plus-recycling, eval = FALSE}
+qt(0.975, df = (22-1))
+```
+
 more conservative than normal distribution; weight on tail ends
 
 ```{r t-distribution-trash-plus-recycling, eval = FALSE}
-mean(boot_table_tr$perc_missorted_c) + c(-1, 1) * 2.05 * sd(boot_table_tr$perc_missorted_c) / sqrt(22)
+mean(boot_table_tr$perc_missorted_c) + c(-1, 1) * 2.0796 * sd(boot_table_tr$perc_missorted_c) / sqrt(22)
 ```
 
-tdist: 0.527804, 0.636317
+tdist: 0.5270206, 0.6371004
 
 - percent of trash that is missorted
 
@@ -256,7 +264,7 @@ percent
 pct <- round(percent)
 lbls <- paste(lbls, pct)
 lbls <-paste(lbls, "%", sep = " ")
-pie(slices, labels = lbls, col = c("#2ca816", "#cc2900"), main = "Missorted Trash")
+pie(slices, labels = lbls, col = c("#2ca816", "#702963"), main = "Missorted Trash")
 ```
 
 - Bootstrap Sample TRASH ONLY
@@ -289,13 +297,17 @@ visualize(boot_missorted_trash) +
 
 $\bar{x} \pm t^*\frac{s}{\sqrt{n}}$
 
+```{r qt-trash, eval = FALSE}
+qt(0.975, df = (15-1))
+```
+
 more conservative than normal distribution; weight on tail ends
 
 ```{r t-distribution-trash, eval = FALSE}
-mean(boot_table_trash$perc_missorted_c) + c(-1, 1) * 2.05 * sd(boot_table_trash$perc_missorted_c) / sqrt(15)
+mean(boot_table_trash$perc_missorted_c) + c(-1, 1) * 2.1448 * sd(boot_table_trash$perc_missorted_c) / sqrt(15)
 ```
 
-tdist: 0.5787015, 0.6767601
+tdist: 0.5764342, 0.6790274
 
 # Why is the t-distribution above not more conservative than the bootstrap?
 
@@ -316,7 +328,7 @@ percent
 pct <- round(percent)
 lbls <- paste(lbls, pct)
 lbls <-paste(lbls, "%", sep = " ")
-pie(slices, labels = lbls, col = c("#2ca816", "#cc2900"), main = "Missorted Recycle")
+pie(slices, labels = lbls, col = c("#2ca816", "#702963"), main = "Missorted Recycle")
 ```
 
 - Bootstrap Sample RECYCLING ONLY
@@ -350,13 +362,17 @@ visualize(boot_missorted_recycling) +
 
 $\bar{x} \pm t^*\frac{s}{\sqrt{n}}$
 
+```{r qt-recycling, eval = FALSE}
+qt(0.975, df = (7-1))
+```
+
 more conservative than normal distribution; weight on tail ends
 
 ```{r t-distribution-recycling, eval = FALSE}
-mean(boot_table_recycling$perc_missorted_c) + c(-1, 1) * 2.05 * sd(boot_table_recycling$perc_missorted_c) / sqrt(7)
+mean(boot_table_recycling$perc_missorted_c) + c(-1, 1) * 2.4469 * sd(boot_table_recycling$perc_missorted_c) / sqrt(7)
 ```
 
-tdist: 0.3816125, 0.5867787
+tdist: 0.3617514, 0.6066398
 
 - percent of compost that is missorted
     
@@ -375,7 +391,7 @@ percent
 pct <- round(percent)
 lbls <- paste(lbls, pct)
 lbls <-paste(lbls, "%", sep = " ")
-pie(slices, labels = lbls, col = c("#2ca816", "#cc2900"), main = "Missorted Compost")
+pie(slices, labels = lbls, col = c("#2ca816", "#702963"), main = "Missorted Compost")
 ```
 
 - Bootstrap Sample COMPOST ONLY
@@ -409,13 +425,17 @@ visualize(boot_missorted_compost) +
 
 $\bar{x} \pm t^*\frac{s}{\sqrt{n}}$
 
+```{r qt-compost, eval = FALSE}
+qt(0.975, df = (11-1))
+```
+
 more conservative than normal distribution; weight on tail ends
 
 ```{r t-distribution-compost, eval = FALSE}
-mean(boot_table_compost$perc_missorted_c) + c(-1, 1) * 2.05 * sd(boot_table_compost$perc_missorted_c) / sqrt(11)
+mean(boot_table_compost$perc_missorted_c) + c(-1, 1) * 2.2281 * sd(boot_table_compost$perc_missorted_c) / sqrt(11)
 ```
 
-tdist: 0.3504496, 0.6152605
+tdist: 0.3389464, 0.6267636
 
 ## Campus Compost
 - percent of all waste that could be compost
