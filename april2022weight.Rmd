@@ -664,3 +664,12 @@ to the improvement of these numbers moving forward.
 -	random sampling from the Plaza Big Bellies --- we got through all of the trash bags that we could with no particular order in mind
 -	common contaminants: clear plastic lids (some are compostable and others are recyclable)
 -	outstanding contaminants: 2 reusable bowls from WU
+
+
+
+
+```{r how-much-overall}
+totals <- waste_audit %>% 
+  summarize(sum(pieces_trash))
+```
+
