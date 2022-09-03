@@ -1,0 +1,90 @@
+---
+title: "Compare February to April 2022 Waste Audits"
+author: "Duke Sustainability Task Force"
+date: "2022-09-02"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+  word_document: default
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE, comment = NA, 
+                      message = FALSE, warning = FALSE,
+                      fig.height = 6, fig.width = 9, fig.align = "center")
+```
+
+```{r packages}
+library(tidyverse)
+library(infer)
+library(car)
+library(stringr)
+library(robotstxt)
+library(rvest)
+library(httr)
+library(tinytex)
+library(readr)
+```
+
+```{r read-csv}
+compareauditdata <- read_csv('Data Feb-Apr 2022 - Sheet1.csv')
+View(compareauditdata)
+```
+
+```{r clean-data}
+waste_audits <- compareauditdata %>% 
+  mutate(total_piece_volume = pieces_trash + pieces_recycle + pieces_compost, 
+        total_can_weight = weight_trash_lbs + weight_recycle_lbs + weight_compost_lbs, 
+        prop_pieces_trash = pieces_trash / total_piece_volume,
+        prop_pieces_recycle = pieces_recycle / total_piece_volume,
+        prop_pieces_compost = pieces_compost / total_piece_volume,
+        prop_trash_weight = weight_trash_lbs / total_can_weight,
+        prop_recycle_weight = weight_recycle_lbs / total_can_weight,
+        prop_compost_weight = weight_compost_lbs / total_can_weight)
+```
+
+```{r average-piece-weight}
+waste_audits %>% 
+  summarize(total_trash_pieces = sum(pieces_trash),
+            total_recycle_pieces = sum(pieces_recycle),
+            total_compost_pieces = sum(pieces_compost),
+            total_trash_weight = sum(weight_trash_lbs), 
+            total_recycle_weight = sum(weight_recycle_lbs),
+            total_compost_weight = sum(weight_compost_lbs),
+            average_trash_weight = total_trash_weight / total_trash_pieces,
+            average_recycle_weight = total_recycle_weight / total_recycle_pieces,
+            average_compost_weight = total_compost_weight / total_compost_pieces)
+```
+
+```{r missorted}
+waste_audits <- waste_audits %>% 
+  mutate(perc_missorted_c = case_when(original_stream == "trash" ~ (pieces_recycle + pieces_compost) / total_piece_volume, original_stream == "recycling" ~ (pieces_trash + pieces_compost) / total_piece_volume, original_stream == "compost" ~ (pieces_trash + pieces_recycle) / total_piece_volume),
+         missorted_count = case_when(original_stream == "trash" ~ (pieces_recycle + pieces_compost), original_stream == "recycling" ~ (pieces_trash + pieces_compost), original_stream == "compost" ~ (pieces_trash + pieces_recycle)),
+         sorted_count = total_piece_volume - missorted_count)
+```
+
+```{r set-seed}
+set.seed(201412)
+null_dist <- waste_audits %>%
+specify(response = perc_missorted_c, explanatory = ___, success = "____") %>%
+hypothesize(null = "point", p = 0.05) %>%
+generate(reps = 10000, type = "permute") %>%
+calculate(stat = "diff in props", order = c("", ""))
+```
+
+```{r}
+prop_over5 <- stats_work %>%
+  count(work_hours) %>%
+  mutate(p = n / sum(n)) %>%
+  filter(work_hours == "At least 5") %>% 
+  pull()
+visualize(null_dist) +
+  shade_p_value(obs_stat = prop_over5, direction = "two-sided")
+```
+
+```{r}
+null_dist %>%
+  get_p_value(obs_stat = prop_over5, direction = "two-sided") 
+```
+

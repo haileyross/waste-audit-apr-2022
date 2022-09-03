@@ -9,9 +9,6 @@ output:
   word_document: default
 ---
 
-question: t-distribution -- did I calcualate the sqrt(n) correctly?
-question: Why is the trash t-distribution not more conservative than the bootstrap?
-
 ```{r setup, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE, comment = NA, 
                       message = FALSE, warning = FALSE,
