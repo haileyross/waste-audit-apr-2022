@@ -64,27 +64,27 @@ waste_audits <- waste_audits %>%
          sorted_count = total_piece_volume - missorted_count)
 ```
 
-```{r set-seed}
-set.seed(201412)
+```{r stat}
+stat <- waste_audits %>%
+specify(perc_missorted_c ~ month) %>%
+calculate(stat = "diff in props", order = c("February", "April"))
+```
+
+```{r null-dist}
 null_dist <- waste_audits %>%
-specify(response = perc_missorted_c, explanatory = ___, success = "____") %>%
-hypothesize(null = "point", p = 0.05) %>%
+specify(perc_missorted_c ~ month) %>%
+hypothesize(null = "independence") %>%
 generate(reps = 10000, type = "permute") %>%
-calculate(stat = "diff in props", order = c("", ""))
+calculate(stat = "diff in props", order = c("February", "April"))
 ```
 
-```{r}
-prop_over5 <- stats_work %>%
-  count(work_hours) %>%
-  mutate(p = n / sum(n)) %>%
-  filter(work_hours == "At least 5") %>% 
-  pull()
+```{r visualize}
 visualize(null_dist) +
-  shade_p_value(obs_stat = prop_over5, direction = "two-sided")
+  shade_p_value(obs_stat = stat, direction = "two-sided")
 ```
 
-```{r}
+```{r p-value}
 null_dist %>%
-  get_p_value(obs_stat = prop_over5, direction = "two-sided") 
+  get_p_value(obs_stat = stat, direction = "two-sided") 
 ```
 
