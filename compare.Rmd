@@ -64,27 +64,130 @@ waste_audits <- waste_audits %>%
          sorted_count = total_piece_volume - missorted_count)
 ```
 
+```{r calculate-totals}
+waste_audits %>% 
+  group_by(month) %>% 
+  summarize(sumtrash = sum(pieces_trash),
+            sumrecycle = sum(pieces_recycle),
+            sumcompost = sum(pieces_compost))
+
+1118 + 265 + 1647
+
+1018 + 719 + 1200
+```
+
+3030 pieces overall in February
+2937 pieces overall in April
+
+```{r}
+waste_audits %>% 
+  filter(original_stream == "trash") %>% 
+  group_by(month) %>% 
+  summarize(sum = sum(pieces_trash))
+```
+
+```{r}
+waste_audits %>% 
+  filter(original_stream == "recycling") %>% 
+  group_by(month) %>% 
+  summarize(sum = sum(pieces_recycle))
+```
+
+```{r missorted}
+waste_audits %>% 
+  filter(original_stream == "compost") %>% 
+  group_by(month) %>% 
+  summarize(sum = sum(pieces_compost))
+```
+
+```{r}
+783 + 105 + 282
+697	+ 358 + 246
+```
+
+1170 correctly sorted pieces in February
+1301 correctly sorted pieces in April
+
+```{r overall-contamination}
+prop.test(x = c(1170, 1301), n = c(3030, 2937))
+```
+
+Overall contamination
+38.61% -> 44.30%  with a p-value < 0.05
+
+break down by category -- trash, recycling, and compost
+recycling definitely driving results
+could do this for recycling specifically
+finding what percent of each category were correct per month (filter by type of item)
+
+```{r trash-contamination}
+prop.test(x = c(783, 697), n = c(1118, 1018))
+```
+
+Trash contamination
+Not a significant change month to month for trash because p-value = 0.46 > 0.05.
+
+```{r recycle-contamination}
+prop.test(x = c(105, 358), n = c(265, 719))
+```
+
+Recycling contamination
+39.62% -> 49.79%  with a p-value 0.0057 < 0.05
+
+```{r compost-contamination}
+prop.test(x = c(282, 246), n = c(1647, 1200))
+```
+
+Compost contamination
+17.12% -> 20.50%  with a p-value 0.025 < 0.05
+
+1 graphic with side by side
+2 bars trash (Feb & Apr), 2 bars recycling, 2 bars compost, 2 overall
+
+Results suggestion campaign was successful -- focus monre attention on inconclusive/negative results.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```{r stat}
-stat <- waste_audits %>%
-specify(perc_missorted_c ~ month) %>%
-calculate(stat = "diff in props", order = c("February", "April"))
+#stat <- waste_audits %>%
+#specify(perc_missorted_c ~ month) %>%
+#calculate(stat = "diff in means", order = c("February", "April"))
 ```
 
 ```{r null-dist}
-null_dist <- waste_audits %>%
-specify(perc_missorted_c ~ month) %>%
-hypothesize(null = "independence") %>%
-generate(reps = 10000, type = "permute") %>%
-calculate(stat = "diff in props", order = c("February", "April"))
+#null_dist <- waste_audits %>%
+#specify(perc_missorted_c ~ month) %>%
+#hypothesize(null = "independence") %>%
+#generate(reps = 10000, type = "permute") %>%
+#calculate(stat = "diff in means", order = c("February", "April"))
 ```
 
 ```{r visualize}
-visualize(null_dist) +
-  shade_p_value(obs_stat = stat, direction = "two-sided")
+#visualize(null_dist) +
+  #shade_p_value(obs_stat = stat, direction = "two-sided")
 ```
 
 ```{r p-value}
-null_dist %>%
-  get_p_value(obs_stat = stat, direction = "two-sided") 
+#null_dist %>%
+  #get_p_value(obs_stat = stat, direction = "two-sided") 
 ```
-
