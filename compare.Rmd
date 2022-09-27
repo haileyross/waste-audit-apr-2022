@@ -69,7 +69,10 @@ waste_audits %>%
   group_by(month) %>% 
   summarize(sumtrash = sum(pieces_trash),
             sumrecycle = sum(pieces_recycle),
-            sumcompost = sum(pieces_compost))
+            sumcompost = sum(pieces_compost),
+            sumtrashlbs = sum(weight_trash_lbs),
+            sumrecyclelbs = sum(weight_recycle_lbs),
+            sumcompostlbs = sum(weight_compost_lbs))
 
 1118 + 265 + 1647
 
