@@ -205,7 +205,7 @@ prop.test(x = c(50.5, 88.2), n = c(189.2, 214.6))
 ```
 
 Overall contamination
-38.61% -> 44.30%  with a p-value < 0.05
+26.69% -> 41.1%  with a p-value < 0.05
 
 break down by category -- trash, recycling, and compost
 recycling definitely driving results
