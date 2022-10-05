@@ -279,3 +279,13 @@ Results suggestion campaign was successful -- focus more attention on inconclusi
 #null_dist %>%
   #get_p_value(obs_stat = stat, direction = "two-sided") 
 ```
+
+
+```{r alluvial}
+waste_audits %>% 
+  group_by(original_stream) %>% 
+  summarize(sum_trash = sum(pieces_trash),
+            sum_recycle = sum(pieces_recycle),
+            sum_compost = sum(pieces_compost))
+```
+
