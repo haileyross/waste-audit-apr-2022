@@ -289,3 +289,18 @@ waste_audits %>%
             sum_compost = sum(pieces_compost))
 ```
 
+
+go in and add location of bin in waste_audits
+
+total correctly sorted waste per location = x <- c(1, 5, 4, 9, 0)
+total waste per location = y <- c(1, 5, 4, 9, 0)
+prop.test(x, y)
+
+```{r}
+location_contamination <- waste_audit %>%
+  group_by(restaurant) %>%
+  summarize(sorted = sum(sorted_count),
+    missorted = sum(missorted_count))
+location_contamination
+```
+
