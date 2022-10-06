@@ -28,7 +28,7 @@ library(readr)
 ```
 
 ```{r read-csv}
-compareauditdata <- read_csv('Data Feb-Apr 2022 - Sheet1.csv')
+compareauditdata <- read_csv('Data Feb-Apr 2022 - Sheet1 (1).csv')
 View(compareauditdata)
 ```
 
@@ -290,17 +290,79 @@ waste_audits %>%
 ```
 
 
-go in and add location of bin in waste_audits
 
-total correctly sorted waste per location = x <- c(1, 5, 4, 9, 0)
-total waste per location = y <- c(1, 5, 4, 9, 0)
-prop.test(x, y)
-
-```{r}
-location_contamination <- waste_audit %>%
-  group_by(restaurant) %>%
-  summarize(sorted = sum(sorted_count),
-    missorted = sum(missorted_count))
-location_contamination
+```{r missorted}
+waste_audits <- waste_audits %>% 
+  mutate(missorted_count = case_when(original_stream == "trash" ~ (pieces_recycle + pieces_compost), original_stream == "recycling" ~ (pieces_trash + pieces_compost), original_stream == "compost" ~ (pieces_trash + pieces_recycle)),
+         sorted_count = total_piece_volume - missorted_count)
 ```
 
+February Locations
+
+```{r}
+waste_audits %>%
+  filter(month == "February") %>% 
+  group_by(location) %>%
+  summarize(sorted = sum(sorted_count),
+    total = sum(missorted_count + sorted_count))
+```
+
+```{r}
+feb_s <- c(589, 409, 172)
+feb_t <- c(1527, 1077, 426)
+
+prop.test(feb_s, feb_t)
+```
+
+February contamination between locations
+Not a significant change difference in contamination between locations
+p-value = 0.6894 > 0.05
+
+BC Plaza 0.3857236
+Loop 0.3797586
+Zweli's 0.4037559
+
+April Locations
+
+```{r}
+waste_audits %>%
+  filter(month == "April") %>% 
+  group_by(location) %>%
+  summarize(sorted = sum(sorted_count),
+    total = sum(missorted_count + sorted_count))
+```
+
+```{r}
+apr_s <- c(891, 220, 190)
+apr_t <- c(1940, 552, 445)
+
+prop.test(apr_s, apr_t)
+```
+
+April contamination between locations
+BC Plaza 0.4592784
+Loop 0.3985507
+Zweli's 0.4269663
+p-value 0.0307 < 0.05
+
+Overall for Locations
+
+```{r}
+waste_audits %>%
+  group_by(location) %>%
+  summarize(sorted = sum(sorted_count),
+    total = sum(missorted_count + sorted_count))
+```
+
+```{r}
+ov_s <- c(1480, 629, 362)
+ov_t <- c(3467, 1629, 871)
+
+prop.test(ov_s, ov_t)
+```
+
+Overall contamination between locations
+BC Plaza 0.4268820
+Loop 0.3861265
+Zweli's 0.4156142
+p-value 0.02241 < 0.05
