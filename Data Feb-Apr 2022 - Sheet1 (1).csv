@@ -1,0 +1,78 @@
+can_number,pieces_trash,pieces_recycle,pieces_compost,weight_trash_lbs,weight_recycle_lbs,weight_compost_lbs,original_stream,month,location
+1,35,8,37,1.4,0,1.2,trash,February,Loop
+2,16,6,52,4.8,0,3,trash,February,Loop
+3,36,0,52,1.2,0,2.6,trash,February,Loop
+4,21,27,21,1,1.6,5,trash,February,Loop
+5,13,7,10,1,0,0.8,trash,February,Loop
+6,30,3,30,2,0.6,3.6,trash,February,Loop
+7,25,17,11,1,1,0.6,recycling,February,Loop
+8,43,14,66,1.6,1.2,7.2,recycling,February,Loop
+9,25,3,34,0.6,4,0.4,compost,February,Loop
+10,5,2,10,0.1,0,1.4,compost,February,Loop
+11,23,4,38,1,0.4,3.2,trash,February,Loop
+12,20,0,14,0.6,0,0.6,trash,February,Loop
+13,23,4,30,1,0,5.4,trash,February,Loop
+14,19,2,10,1.2,0,1.6,trash,February,Loop
+15,49,8,51,2.4,0,5.2,trash,February,Loop
+16,3,3,7,0.6,0.4,0.2,trash,February,Loop
+17,5,7,8,0.2,0.4,0.2,trash,February,Loop
+18,7,2,9,0.2,0,0.4,recycling,February,Loop
+19,2,3,4,0.2,0.2,0.2,recycling,February,Loop
+20,5,0,5,0.6,0,0,compost,February,Loop
+21,6,0,13,0.2,0,0.8,compost,February,Loop
+22,18,2,14,0.4,0,0.8,trash,February,Loop
+23,8,5,20,0.4,0.4,1.6,trash,February,Zwelis
+24,17,1,53,0.8,0.2,3.2,trash,February,Zwelis
+25,28,0,51,0.2,0,2,compost,February,Zwelis
+26,10,1,66,0.8,0,3,compost,February,Zwelis
+27,9,4,25,0.6,0.2,1.6,trash,February,Zwelis
+28,21,1,106,1,0,6.4,trash,February,Zwelis
+29,18,1,52,0.6,0.4,5.6,trash,February,BC Plaza
+30,43,19,41,1.2,0.2,1.4,recycling,February,BC Plaza
+31,20,20,14,0.2,0.2,1.8,compost,February,BC Plaza
+32,108,19,208,2,0.6,16.8,trash,February,BC Plaza
+33,12,2,33,0.2,0.2,2,compost,February,BC Plaza
+34,16,23,8,0.8,0.8,0.4,recycling,February,BC Plaza
+35,169,9,201,2.4,0.4,20.6,trash,February,BC Plaza
+36,47,27,17,3.2,1.8,0.8,recycling,February,BC Plaza
+37,5,1,13,0.2,0.2,0.4,compost,February,BC Plaza
+38,25,2,59,0.8,0,6.8,trash,February,BC Plaza
+39,24,1,40,0.8,0,3.6,trash,February,BC Plaza
+40,14,2,21,0.6,0,2.2,trash,February,BC Plaza
+41,59,3,50,2,0,3.4,trash,February,BC Plaza
+42,11,1,23,0.2,0,1.8,compost,February,BC Plaza
+43,21,0,12,0.4,0,0.4,compost,February,BC Plaza
+44,4,1,8,0.2,0.2,0.5,compost,February,BC Plaza
+45,25,15,25,0.6,0.4,4.6,trash,April,Loop
+46,24,13,31,0.8,0.4,1.4,trash,April,Loop
+47,68,35,59,2.4,1,6,trash,April,Loop
+48,20,15,12,1.6,2.2,1,recycling,April,Loop
+49,11,6,10,1,0,1.2,compost,April,Loop
+50,30,7,32,0.6,0.4,1.8,trash,April,Loop
+51,10,8,16,0,0.4,1.4,trash,April,Loop
+52,16,14,2,0.2,0.8,0.2,recycling,April,Loop
+53,17,7,24,1,0.6,3.2,compost,April,Loop
+54,7,14,4,0.4,0.6,1,trash,April,Zwelis
+55,28,13,33,1.2,0.6,5.2,trash,April,Zwelis
+56,35,5,48,0.8,0.2,3.2,compost,April,Zwelis
+57,20,15,23,0.4,1,2.6,compost,April,Zwelis
+58,31,7,32,1,0.4,4.4,trash,April,Zwelis
+59,53,11,66,1.6,0.6,5.2,trash,April,Zwelis
+60,182,40,189,2.6,1.6,2.8,trash,April,BC Plaza
+61,27,56,37,2.2,10,0.6,recycling,April,BC Plaza
+62,18,4,35,0.6,0.4,9,compost,April,BC Plaza
+63,117,61,133,5,1.8,20,trash,April,BC Plaza
+64,7,3,20,0.2,0.6,2,compost,April,BC Plaza
+65,34,125,26,3.4,8.2,0.8,recycling,April,BC Plaza
+66,68,43,137,2.8,1.4,17,trash,April,BC Plaza
+67,32,41,19,1.6,2.8,0.6,recycling,April,BC Plaza
+68,23,6,40,2.6,0.6,4.4,compost,April,BC Plaza
+69,7,1,6,0.2,0,0.6,trash,April,BC Plaza
+70,10,25,37,0,0.4,4.2,trash,April,BC Plaza
+71,24,59,10,1.4,3.4,0.2,recycling,April,BC Plaza
+72,37,7,37,3.6,0.2,7.6,trash,April,BC Plaza
+73,17,48,11,1.6,2.6,0.4,recycling,April,BC Plaza
+74,9,8,32,1.6,3.8,5.2,compost,April,BC Plaza
+75,1,0,5,0,0,0.4,compost,April,BC Plaza
+76,5,4,0,0.2,0.2,0,compost,April,BC Plaza
+77,5,3,9,0.2,1.2,4.2,compost,April,BC Plaza
