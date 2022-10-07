@@ -254,33 +254,6 @@ Results suggestion campaign was successful -- focus more attention on inconclusi
 
 
 
-
-
-```{r stat}
-#stat <- waste_audits %>%
-#specify(perc_missorted_c ~ month) %>%
-#calculate(stat = "diff in means", order = c("February", "April"))
-```
-
-```{r null-dist}
-#null_dist <- waste_audits %>%
-#specify(perc_missorted_c ~ month) %>%
-#hypothesize(null = "independence") %>%
-#generate(reps = 10000, type = "permute") %>%
-#calculate(stat = "diff in means", order = c("February", "April"))
-```
-
-```{r visualize}
-#visualize(null_dist) +
-  #shade_p_value(obs_stat = stat, direction = "two-sided")
-```
-
-```{r p-value}
-#null_dist %>%
-  #get_p_value(obs_stat = stat, direction = "two-sided") 
-```
-
-
 ```{r alluvial}
 waste_audits %>% 
   group_by(original_stream) %>% 
@@ -366,3 +339,116 @@ BC Plaza 0.4268820
 Loop 0.3861265
 Zweli's 0.4156142
 p-value 0.02241 < 0.05
+
+
+
+
+
+Location Contamination (R&C Only)
+
+February Locations
+
+```{r}
+waste_audits %>%
+  filter(month == "February",
+         original_stream == "recycling" | original_stream == "compost") %>% 
+  group_by(location) %>%
+  summarize(sorted = sum(sorted_count),
+    total = sum(missorted_count + sorted_count))
+```
+
+```{r}
+febrc_s <- c(172, 98, 117)
+febrc_t <- c(442, 311, 156)
+
+prop.test(febrc_s, febrc_t)
+```
+
+February contamination between locations
+BC Plaza 0.3891403
+Loop 0.3151125
+Zweli's 0.7500000 
+p-value 2.2e-16 < 0.05
+
+Zweli's wins February (R&C). Then BC. Then Loop.
+
+April Locations
+
+```{r}
+waste_audits %>%
+  filter(month == "April",
+         original_stream == "recycling" | original_stream == "compost") %>% 
+  group_by(location) %>%
+  summarize(sorted = sum(sorted_count),
+    total = sum(missorted_count + sorted_count))
+```
+
+```{r}
+aprrc_s <- c(470, 63, 71)
+aprrc_t <- c(803, 154, 146)
+
+prop.test(aprrc_s, aprrc_t)
+```
+
+April contamination between locations
+BC Plaza 0.5853051
+Loop 0.4090909
+Zweli's 0.4863014 
+p-value 8.488e-05 < 0.05
+
+BC Plaza wins April (R&C). Then Zweli's. Then Loop.
+
+
+Location Contamination (Compost Only)
+
+February Locations
+
+```{r}
+waste_audits %>%
+  filter(month == "February",
+         original_stream == "compost") %>% 
+  group_by(location) %>%
+  summarize(sorted = sum(sorted_count),
+    total = sum(missorted_count + sorted_count))
+```
+
+```{r}
+febc_s <- c(103, 62, 117)
+febc_t <- c(201, 108, 156)
+
+prop.test(febc_s, febc_t)
+```
+
+February contamination between locations
+BC Plaza 0.5124378
+Loop 0.5740741
+Zweli's 0.7500000 
+p-value 2.269e-05 < 0.05
+
+Zweli's wins February (just compost). Then Loop. Then BC.
+
+April Locations
+
+```{r}
+waste_audits %>%
+  filter(month == "April",
+         original_stream == "compost") %>% 
+  group_by(location) %>%
+  summarize(sorted = sum(sorted_count),
+    total = sum(missorted_count + sorted_count))
+```
+
+```{r}
+aprc_s <- c(141, 34, 71)
+aprc_t <- c(237, 75, 146)
+
+prop.test(aprc_s, aprc_t)
+```
+
+April contamination between locations
+BC Plaza 0.5949367
+Loop 0.4533333
+Zweli's 0.4863014
+p-value 0.03303 < 0.05
+
+BC Plaza wins April (just compost). Then Zweli's. Then Loop.
